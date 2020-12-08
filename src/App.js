@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import LoginContainer from './Login/LoginContainer';
 import RegistrationContainer from './Registration/RegistrationContainer';
+import HomeContainer from './Home/HomeContainer';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
             </Route>
             <Route path="/registration">
               <RegistrationContainer />
+            </Route>
+            <Route path="/home">
+              <HomeContainer />
             </Route>
           </Switch>
         </Router>
