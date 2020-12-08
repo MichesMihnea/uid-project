@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+body 
+{
+  margin-top: 10%;
+}
+
+.login-wrapper
+{
+  width: 15%;
+  margin-left: 42.5%;
+}
+
+.field-wrapper
+{
+  margin-bottom: 10px;
+}
+
+.login-button
+{
+  width: 60%;
+  margin-top: 20%;
+  background-color: black;
+}
+
+.link-wrapper
+{
+  margin-top: 20px;
+}
