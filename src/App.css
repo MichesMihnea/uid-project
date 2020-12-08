@@ -64,3 +64,10 @@ body
 {
   margin-top: 20px;
 }
+
+.role-button
+{
+  width: 60%;
+  margin-top: 10%;
+  background-color: black;
+}

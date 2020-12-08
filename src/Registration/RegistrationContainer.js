@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Registration from './Registration'
 
 function RegistrationContainer() {
+
+    const [role, setRole] = useState("")
+
     return (
-        <Registration />
+        <Registration role={role}
+            setRole={setRole}
+        />
     )
 }
 
