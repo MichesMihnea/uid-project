@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 
-class Profile extends Component{
+class Beneficiary extends Component{
     constructor(props){
         super(props)
     }
@@ -8,11 +8,11 @@ class Profile extends Component{
     render(){
         return(
             <div>
-                <h1>Profile page</h1>
-                <h2>Hello {this.props.username}</h2>
+                <h1>Beneficiary page</h1>
+                <h2>Hello {localStorage.getItem('Username')}</h2>
             </div>
         )
     }
 }
 
-export default Profile
+export default Beneficiary

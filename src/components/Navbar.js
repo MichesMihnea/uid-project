@@ -11,10 +11,33 @@ import Login from '../Login/LoginContainer'
 import Register from '../Registration/RegistrationContainer'
 import Home from '../Home/HomeContainer'
 import FirstPage from '../components/FirstPage'
+import Profile from '../components/Profile'
+import Provider from './Provider';
+import Beneficiary from './Beneficiary';
 
 class BootstrapNavbar extends React.Component{
+    constructor(props){
+        super(props)
+        this.handleLogout = this.handleLogout.bind(this)
+    }
+
+    handleLogout(){
+        localStorage.setItem('LogStatus', 'loggedOut')
+        localStorage.removeItem('Username')
+        window.location.href = '/login';
+    }
 
     render(){
+        let loginStatus = null
+        let loginName = null
+        if(localStorage.getItem('LogStatus') == "logged"){
+            loginStatus = <button type="button" onClick={() => this.handleLogout()}>Logout</button>
+            loginName = localStorage.getItem('Username')
+        }else{
+            loginStatus = <Nav.Link href="/login">Login</Nav.Link>
+            loginName = <Nav.Link href="/registration">Register</Nav.Link>
+        }
+
         return(
             <div>
                 <div className="row">
@@ -37,8 +60,8 @@ class BootstrapNavbar extends React.Component{
                                     </NavDropdown>
                                     </Nav>
                                     <Nav>
-                                    <Nav.Link href="/login">Login</Nav.Link>
-                                    <Nav.Link href="/registration">Register</Nav.Link>
+                                    {loginStatus}
+                                    {loginName}
                                     </Nav>
                                 </Navbar.Collapse>
                             </Navbar>
@@ -58,6 +81,15 @@ class BootstrapNavbar extends React.Component{
                                 </Route>
                                 <Route path="/firstPage">
                                     {<FirstPage />}
+                                </Route>
+                                <Route path="/profile">
+                                    {<Profile/>}
+                                </Route>
+                                <Route path="/provider">
+                                    {<Provider/>}
+                                </Route>
+                                <Route path="/beneficiary">
+                                    {<Beneficiary/>}
                                 </Route>
                             </Switch>
                         </Router>
