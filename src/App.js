@@ -26,53 +26,6 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <SidebarContainer />
-        <Router forceRefresh>
-          <Switch>
-            <Route exact path="/">
-                <Redirect to="/firstPage" />
-            </Route>
-            <Route path="/login">
-                {<Login />}
-            </Route>
-            <Route path="/registration">
-                {<Register />}
-            </Route>
-            <Route path="/home">
-                {<Home />}
-            </Route>
-            <Route path="/firstPage">
-                {<FirstPage />}
-            </Route>
-            <Route path="/contact-us">
-                {<ContactPage />}
-            </Route>
-            <Route path="/about-us">
-                {<AboutPage />}
-            </Route>
-            <Route path="/my-profile">
-                {<ProfilePage />}
-            </Route>
-            <Route path="/see-profile">
-                {<ProfilePage />}
-            </Route>
-            <Route path="/edit-profile">
-                {<EditProfilePage />}
-            </Route>
-            <Route path="/add-a-request">
-                {<AddRequestPage />}
-            </Route>
-            <Route path="/announcements">
-                {<AnnouncementsPage />}
-            </Route>
-            <Route path="/settings">
-                {<SettingsPage />}
-            </Route>
-            <Route path="/faq">
-                {<FaqPage />}
-            </Route>
-          </Switch>
-        </Router>
       </div>
   );
 }
