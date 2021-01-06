@@ -5,15 +5,25 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import logo from './logo.png'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  useParams,
+} from "react-router-dom";
+import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 
 function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
     return (
-      <>
+      <Router forceRefresh>
+        <NavLink to={label.split(" ").join("-").toLowerCase()}>
         <ListItem button dense {...rest}>
           <ListItemText style={{ paddingLeft: depth * depthStep }}>
             <span>{label}</span>
           </ListItemText>
         </ListItem>
+        </NavLink>
         {Array.isArray(items) ? (
           <List disablePadding dense>
             {items.map((subItem) => (
@@ -26,7 +36,7 @@ function SidebarItem({ label, items, depthStep = 10, depth = 0, ...rest }) {
             ))}
           </List>
         ) : null}
-      </>
+      </Router>
     )
   }
   
