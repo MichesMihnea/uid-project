@@ -22,10 +22,12 @@ class Login extends Component{
             this.setState({success: 1, type: "provider"})
             localStorage.setItem('LogStatus', "logged")
             localStorage.setItem('Username', username)
+            localStorage.setItem('Type', "provider")
         }else if(username == "Mihnea" && password == "pass"){
             this.setState({success: 1, type: "beneficiary"})
             localStorage.setItem('LogStatus', "logged")
             localStorage.setItem('Username', username)
+            localStorage.setItem('Type', "beneficiary")
         }
         else{
             this.setState({success: 0})

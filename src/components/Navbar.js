@@ -56,7 +56,7 @@ class BootstrapNavbar extends React.Component{
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
-                                    <Nav.Link href="/firstPage">Home</Nav.Link>
+                                    <Nav.Link href={localStorage.getItem("Type")}>Home</Nav.Link>
                                     <Nav.Link href="/about-us">Contact Us</Nav.Link>
                                     <Nav.Link href="/contact-us">About Us</Nav.Link>
                                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">

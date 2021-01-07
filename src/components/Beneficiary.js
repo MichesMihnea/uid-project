@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import Sidebar from '../Sidebar/SidebarContainer'
 
 class Beneficiary extends Component{
     constructor(props){
@@ -10,6 +11,7 @@ class Beneficiary extends Component{
             <div>
                 <h1>Beneficiary page</h1>
                 <h2>Hello {localStorage.getItem('Username')}</h2>
+                <Sidebar />
             </div>
         )
     }
