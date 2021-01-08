@@ -94,3 +94,26 @@
 {
   margin-top: 50px;
 }
+
+.add-request
+{
+  width: 50%;
+  height: 600px;
+  margin-left: 25%;
+  margin-top: 5%;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+}
+
+.add-request-field
+{
+  width: 35%;
+  margin-left: 10%;
+  margin-top: 2.5%;
+}
+
+.add-request-options
+{
+  display: inline-block;
+  margin-left: 60%;
+}

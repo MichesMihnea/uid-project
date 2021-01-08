@@ -32,6 +32,7 @@ class BootstrapNavbar extends React.Component{
     handleLogout(){
         localStorage.setItem('LogStatus', 'loggedOut')
         localStorage.removeItem('Username')
+        localStorage.removeItem('Type')
         window.location.href = '/login';
     }
 
@@ -78,8 +79,11 @@ class BootstrapNavbar extends React.Component{
                                 <Route exact path="/">
                                     <Redirect to="/firstPage" />
                                 </Route>
+                                <Route path="/log-out">
+                                    { () => this.handleLogout()}
+                                </Route>
                                 <Route path="/login">
-                                    {<Login />}
+                                    {<Login></Login>}
                                 </Route>
                                 <Route path="/registration">
                                     {<Register />}
