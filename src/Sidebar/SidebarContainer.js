@@ -3,7 +3,35 @@ import Sidebar from './Sidebar'
 
 function SidebarContainer() {
 
-    const items = [
+    var items = [];
+    if(localStorage.getItem("Type") === "beneficiary")
+      items = [
+          { name: 'home', label: 'Home' },
+          {
+            name: 'myProfile',
+            label: 'My Profile',
+            items: [
+              { name: 'seeProfile', label: 'See Profile' },
+              { name: 'editProfile', label: 'Edit Profile' },
+              { name: 'addRequest', label: 'Add a request' },
+              { name: 'logOut', label: 'LOG OUT' },
+            ],
+          },
+          {
+            name: 'announcements',
+            label: 'Announcements',
+          },
+          {
+            name: 'settings',
+            label: 'Settings',
+          },
+          {
+            name: 'faq',
+            label: 'FAQ',
+          }
+        ]
+    else 
+      items = [
         { name: 'home', label: 'Home' },
         {
           name: 'myProfile',
@@ -11,7 +39,6 @@ function SidebarContainer() {
           items: [
             { name: 'seeProfile', label: 'See Profile' },
             { name: 'editProfile', label: 'Edit Profile' },
-            { name: 'addRequest', label: 'Add a request' },
             { name: 'logOut', label: 'LOG OUT' },
           ],
         },
