@@ -117,3 +117,8 @@
   display: inline-block;
   margin-left: 60%;
 }
+
+.announcement-wrapper
+{
+  margin-top: 30px;
+}
