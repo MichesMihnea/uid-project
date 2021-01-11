@@ -21,6 +21,7 @@ import FaqPage from './FaqPage';
 import AboutPage from '../components/AboutPage'
 import EditProfilePage from './EditProfilePage'
 import AnnouncementsPage from './AnnouncementsPage'
+import Feed from './Feed'
 
 
 class BootstrapNavbar extends React.Component{
@@ -90,6 +91,9 @@ class BootstrapNavbar extends React.Component{
                                 </Route>
                                 <Route path="/home">
                                     {<Home />}
+                                </Route>
+                                <Route path="/feed">
+                                    {<Feed />}
                                 </Route>
                                 <Route path="/firstPage">
                                     {<FirstPage />}
