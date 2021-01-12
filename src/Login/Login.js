@@ -48,6 +48,13 @@ class Login extends Component{
                     <PrimaryButton className="login-button" onClick={() => this.handleSubmit()}>Login</PrimaryButton>
                 </div>
                 <div className="link-wrapper">
+                    <NavLink to={"/passwordRecovery"}
+                        style={{ color: "blue", textDecoration: "none" }}
+                    >
+                        <p className="link">Forgot your password?</p>
+                    </NavLink>
+                </div>
+                <div className="link-wrapper">
                     <NavLink to={"/registration"}
                         style={{ color: "blue", textDecoration: "none" }}
                     >
@@ -59,6 +66,8 @@ class Login extends Component{
             renderProfile = 
             <div className="login-wrapper">
                 <h2>Login</h2>
+                <p style={{"color": "red"}}>Invalid username or password.</p>
+                <p style={{"color": "red"}}>Please verify your input.</p>
                 <div className="field-wrapper">
                     <TextField id="username" placeholder="Username..." type="text" />
                 </div>
@@ -69,13 +78,19 @@ class Login extends Component{
                     <PrimaryButton className="login-button" onClick={() => this.handleSubmit()}>Login</PrimaryButton>
                 </div>
                 <div className="link-wrapper">
+                    <NavLink to={"/passwordRecovery"}
+                        style={{ color: "blue", textDecoration: "none" }}
+                    >
+                        <p className="link">Forgot your password?</p>
+                    </NavLink>
+                </div>
+                <div className="link-wrapper">
                     <NavLink to={"/registration"}
                         style={{ color: "blue", textDecoration: "none" }}
                     >
                         <p className="link">Don't have an account? Register!</p>
                     </NavLink>
                 </div>
-                <h2>Wrong credentials, try again</h2>
             </div> 
         }else if(this.state.success == 1){
             if(this.state.type == "provider"){

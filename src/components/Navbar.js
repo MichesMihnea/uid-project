@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,13 +21,21 @@ import FaqPage from './FaqPage';
 import AboutPage from '../components/AboutPage'
 import EditProfilePage from './EditProfilePage'
 import AnnouncementsPage from './AnnouncementsPage'
+import PasswordRecovery from './PasswordRecovery'
 import Feed from './Feed'
+import SearchPage from './SearchPage'
+import { TextField } from 'office-ui-fabric-react';
 
+const initialState = {
+    category: "qwer"
+}
 
 class BootstrapNavbar extends React.Component{
+
     constructor(props){
         super(props)
         this.handleLogout = this.handleLogout.bind(this)
+        this.state = initialState;
     }
 
     handleLogout(){
@@ -35,6 +43,12 @@ class BootstrapNavbar extends React.Component{
         localStorage.removeItem('Username')
         localStorage.removeItem('Type')
         window.location.href = '/login';
+    }
+
+    changeState(e){
+        this.state = {
+            category: e.target.value
+        }
     }
 
     render(){
@@ -54,7 +68,18 @@ class BootstrapNavbar extends React.Component{
                     <div className="col-md-12">
                         <Router>
                             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                                <Navbar.Brand href="/home">Platform for contracting services</Navbar.Brand>
+                            <Navbar.Brand href="/home">Platform for contracting services</Navbar.Brand>
+                                {
+                                    localStorage.getItem("Type") === "beneficiary" &&
+                                    <>
+                                        <TextField placeholder="Search by skills" onChange={(e) => {
+                                            this.setState({
+                                                category: e.target.value
+                                            })
+                                        }}></TextField>
+                                        <Nav.Link href={"/search/" + this.state.category}>Search</Nav.Link>
+                                    </>
+                                }          
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
@@ -81,7 +106,7 @@ class BootstrapNavbar extends React.Component{
                                     <Redirect to="/firstPage" />
                                 </Route>
                                 <Route path="/log-out">
-                                    { () => this.handleLogout()}
+                                    { () => this.handleLogout() }
                                 </Route>
                                 <Route path="/login">
                                     {<Login></Login>}
@@ -98,11 +123,17 @@ class BootstrapNavbar extends React.Component{
                                 <Route path="/firstPage">
                                     {<FirstPage />}
                                 </Route>
+                                <Route path="/passwordRecovery">
+                                    {<PasswordRecovery />}
+                                </Route>
                                 <Route path="/provider">
                                     {<Provider/>}
                                 </Route>
                                 <Route path="/beneficiary">
                                     {<Beneficiary/>}
+                                </Route>
+                                <Route path="/search/:category">
+                                    {<SearchPage />}
                                 </Route>
                                 <Route path="/contact-us">
                                     {<ContactPage />}
