@@ -3,8 +3,9 @@ import React, {Component} from 'react'
 function FaqPage() {
 
     const questions = [
-        {question: "Question 1", answer: "Answer 1"},
-        {question: "Question 2", answer: "Answer 2"}
+        {question: "How many providers are currently using the application?", answer: "We have thousands of providers currently activating."},
+        {question: "Does the platform actually work?", answer: "Absolutely!"},
+        {question: "Is this a good alternative to platforms like Fiverr?", answer: "We strongly recommend our application."}
     ]
 
     return(

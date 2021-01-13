@@ -37,7 +37,7 @@ function AnnouncementsPage() {
         <div className="add-request">
             {announcements.map((announcement) => (
                 <div className="announcement-wrapper">
-                    <h4 style={{"marginBottom": "20px"}}>Successfully applied to {announcement.name} {announcement.type} request.</h4>
+                    <h4 style={{"marginBottom": "20px"}}>Successfully applied to {announcement.name}'s {announcement.type} request.</h4>
                     <span>
                         <Button variant="contained" color="secondary">
                             See profile
