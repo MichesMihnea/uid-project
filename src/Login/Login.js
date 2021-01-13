@@ -54,6 +54,13 @@ class Login extends Component{
                         <p className="link">Don't have an account? Register!</p>
                     </NavLink>
                 </div>
+                <div className="link-wrapper">
+                    <NavLink to={"/passwordRecovery"}
+                        style={{ color: "blue", textDecoration: "none" }}
+                    >
+                        <p className="link">Forgot your password?</p>
+                    </NavLink>
+                </div>
             </div>  
         if(this.state.success == 0){
             renderProfile = 
@@ -73,6 +80,13 @@ class Login extends Component{
                         style={{ color: "blue", textDecoration: "none" }}
                     >
                         <p className="link">Don't have an account? Register!</p>
+                    </NavLink>
+                </div>
+                <div className="link-wrapper">
+                    <NavLink to={"/passwordRecovery"}
+                        style={{ color: "blue", textDecoration: "none" }}
+                    >
+                        <p className="link">Forgot your password?</p>
                     </NavLink>
                 </div>
                 <h2>Wrong credentials, try again</h2>
