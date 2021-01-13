@@ -40,8 +40,7 @@ class BootstrapNavbar extends React.Component{
 
     handleLogout(){
         localStorage.setItem('LogStatus', 'loggedOut')
-        localStorage.removeItem('Username')
-        localStorage.removeItem('Type')
+        localStorage.removeItem('UserData')
         window.location.href = '/login';
     }
 
@@ -54,9 +53,25 @@ class BootstrapNavbar extends React.Component{
     render(){
         let loginStatus = null
         let loginName = null
+        let searchbar = null
+        let searchsend = null
+        let type = null
         if(localStorage.getItem('LogStatus') == "logged"){
             loginStatus = <button type="button" onClick={() => this.handleLogout()}>Logout</button>
-            loginName = localStorage.getItem('Username')
+            loginName = JSON.parse(localStorage.getItem('UserData')).name
+            if( JSON.parse(localStorage.getItem('UserData')).type === "beneficiary"){
+                searchbar = <TextField placeholder="Search by skills" onChange={(e) => {
+                                            this.setState({
+                                                category: e.target.value
+                                            })
+                            }}></TextField>                            
+                searchsend = <Nav.Link href={"/search/" + this.state.category}>Search</Nav.Link>
+                type = "beneficiary"
+            }else{
+                searchbar = <h1> </h1>
+                searchsend = <h1> </h1>
+                type = "provider"
+            }
         }else{
             loginStatus = <Nav.Link href="/login">Login</Nav.Link>
             loginName = <Nav.Link href="/registration">Register</Nav.Link>
@@ -69,23 +84,14 @@ class BootstrapNavbar extends React.Component{
                         <Router>
                             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                             <Navbar.Brand href="/home">Platform for contracting services</Navbar.Brand>
-                                {
-                                    localStorage.getItem("Type") === "beneficiary" &&
-                                    <>
-                                        <TextField placeholder="Search by skills" onChange={(e) => {
-                                            this.setState({
-                                                category: e.target.value
-                                            })
-                                        }}></TextField>
-                                        <Nav.Link href={"/search/" + this.state.category}>Search</Nav.Link>
-                                    </>
-                                }          
+                                {searchbar}  
+                                {searchsend}        
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
-                                    <Nav.Link href={localStorage.getItem("Type")}>Home</Nav.Link>
-                                    <Nav.Link href="/about-us">Contact Us</Nav.Link>
-                                    <Nav.Link href="/contact-us">About Us</Nav.Link>
+                                    <Nav.Link href={type}>Home</Nav.Link>
+                                    <Nav.Link href="/contact-us">Contact Us</Nav.Link>
+                                    <Nav.Link href="/about-us">About Us</Nav.Link>
                                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

@@ -4,7 +4,8 @@ import Sidebar from './Sidebar'
 function SidebarContainer() {
 
     var items = [];
-    if(localStorage.getItem("Type") === "beneficiary")
+    var userData = JSON.parse(localStorage.getItem('UserData'))
+    if(userData.type === "beneficiary")
       items = [
           { name: 'home', label: 'Home' },
           {

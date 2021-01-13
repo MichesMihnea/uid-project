@@ -9,6 +9,22 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class AddRequestPage extends Component{
+    constructor(props){
+        super(props)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(){
+        let request = {type: document.getElementById('requestType').value,
+                       description: document.getElementById('requestDescription').value,
+                       title: document.getElementById('requestTitle').value}
+        var requests = JSON.parse(localStorage.getItem('Requests'))
+        if(requests == null){
+            requests = []
+        }
+        requests.push(request)
+        localStorage.setItem('Requests', JSON.stringify(requests))
+    }
 
     render(){
         return(
@@ -18,20 +34,14 @@ class AddRequestPage extends Component{
                 <div className="add-request">
                     <div className="add-request-field">
                         <h4>Describe your situation</h4>
-                        <TextField placeholder="Title"></TextField>
+                        <TextField id="requestTitle" placeholder="Title"></TextField>
                     </div>
                     <div className="add-request-options">
-                        <FormControl >
-                            <InputLabel>Select the skill your situation requires</InputLabel>
-                                <Select style={{"width": "200px", "marginTop": "30px"}}>
-                                    <MenuItem>Option 1</MenuItem>
-                                    <MenuItem>Option 2</MenuItem>
-                                    <MenuItem>Option 3</MenuItem>
-                                </Select>
-                        </FormControl>
+                        <label>Type:</label>
+                        <input id="requestType" type="text" placeholder="Enter request type"></input>
                     </div>
                     <div className="add-request-field">
-                        <TextField placeholder="Description" multiline rows={15}></TextField>
+                        <TextField id="requestDescription" placeholder="Description" multiline rows={15}></TextField>
                     </div>   
                     <div className="add-request-field">
                         <FormControlLabel
@@ -41,7 +51,7 @@ class AddRequestPage extends Component{
                         />
                     </div>   
                     <div style={{"display": "inline", "float": "right", "margin-right": "10%"}}>
-                        <PrimaryButton>Submit</PrimaryButton>
+                        <PrimaryButton onClick={()=>this.handleSubmit()}>Submit</PrimaryButton>
                     </div>
                 </div>
             </div>

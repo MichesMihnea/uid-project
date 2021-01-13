@@ -8,10 +8,11 @@ class Provider extends Component{
     }
 
     render(){
+        var userData = JSON.parse(localStorage.getItem('UserData'))
         return(
             <div>
                 <h1>Provider page</h1>
-                <h2>Hello {localStorage.getItem('Username')}</h2>
+                <h2>Hello {userData.name}</h2>
                 <NavLink to="/feed">
                     Check out your feed?
                 </NavLink>

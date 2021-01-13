@@ -7,10 +7,11 @@ class Beneficiary extends Component{
     }
 
     render(){
+        var userData = JSON.parse(localStorage.getItem('UserData'))
         return(
             <div>
                 <h1>Beneficiary page</h1>
-                <h2>Hello {localStorage.getItem('Username')}</h2>
+                <h2>Hello {userData.name}</h2>
                 <Sidebar />
             </div>
         )

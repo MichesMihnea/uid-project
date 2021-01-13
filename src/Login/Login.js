@@ -19,15 +19,15 @@ class Login extends Component{
         var username = document.getElementById("username").value
         var password = document.getElementById("password").value
         if(username == "Andrei" && password == "pass"){
+            var userData = {name: "Andrei", password: "pass", email: "andrei@email", phone: "0746031044", type: "provider", description: "Hi I am Andrei."}
             this.setState({success: 1, type: "provider"})
             localStorage.setItem('LogStatus', "logged")
-            localStorage.setItem('Username', username)
-            localStorage.setItem('Type', "provider")
+            localStorage.setItem('UserData', JSON.stringify(userData))
         }else if(username == "Mihnea" && password == "pass"){
+            var userData = {name: "Mihnea", password: "pass", email: "mihnea@email", phone: "0746031665", type: "beneficiary", description: "Hi I am Mihnea."}
             this.setState({success: 1, type: "beneficiary"})
             localStorage.setItem('LogStatus', "logged")
-            localStorage.setItem('Username', username)
-            localStorage.setItem('Type', "beneficiary")
+            localStorage.setItem('UserData', JSON.stringify(userData))
         }
         else{
             this.setState({success: 0})
@@ -48,13 +48,6 @@ class Login extends Component{
                     <PrimaryButton className="login-button" onClick={() => this.handleSubmit()}>Login</PrimaryButton>
                 </div>
                 <div className="link-wrapper">
-                    <NavLink to={"/passwordRecovery"}
-                        style={{ color: "blue", textDecoration: "none" }}
-                    >
-                        <p className="link">Forgot your password?</p>
-                    </NavLink>
-                </div>
-                <div className="link-wrapper">
                     <NavLink to={"/registration"}
                         style={{ color: "blue", textDecoration: "none" }}
                     >
@@ -66,8 +59,6 @@ class Login extends Component{
             renderProfile = 
             <div className="login-wrapper">
                 <h2>Login</h2>
-                <p style={{"color": "red"}}>Invalid username or password.</p>
-                <p style={{"color": "red"}}>Please verify your input.</p>
                 <div className="field-wrapper">
                     <TextField id="username" placeholder="Username..." type="text" />
                 </div>
@@ -78,19 +69,13 @@ class Login extends Component{
                     <PrimaryButton className="login-button" onClick={() => this.handleSubmit()}>Login</PrimaryButton>
                 </div>
                 <div className="link-wrapper">
-                    <NavLink to={"/passwordRecovery"}
-                        style={{ color: "blue", textDecoration: "none" }}
-                    >
-                        <p className="link">Forgot your password?</p>
-                    </NavLink>
-                </div>
-                <div className="link-wrapper">
                     <NavLink to={"/registration"}
                         style={{ color: "blue", textDecoration: "none" }}
                     >
                         <p className="link">Don't have an account? Register!</p>
                     </NavLink>
                 </div>
+                <h2>Wrong credentials, try again</h2>
             </div> 
         }else if(this.state.success == 1){
             if(this.state.type == "provider"){

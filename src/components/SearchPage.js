@@ -19,12 +19,7 @@ function SearchPage() {
                 {announcements.map((announcement) => (
                     announcement.type === category &&
                         <div className="announcement-wrapper">
-                            <h4 style={{"marginBottom": "20px"}}>{announcement.name} wants to respond to your {announcement.type} request.</h4>
-                            <span style={{"marginRight": "10%"}}>
-                                <Button variant="contained" color="primary">
-                                    Approve
-                                </Button>
-                            </span>
+                            <h4 style={{"marginBottom": "20px"}}>{announcement.name} thinks to be a good fit for your {announcement.type} request.</h4>
                             <span>
                                 <Button variant="contained" color="secondary">
                                     See profile

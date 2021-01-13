@@ -11,6 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 function Feed() {
 
     const [filter, setFilter] = useState("All");
+    const requestsStorage = JSON.parse(localStorage.getItem('Requests'))
 
     const handleChange = (event) => {
         setFilter(event.target.value);
@@ -20,6 +21,16 @@ function Feed() {
         {title: "Electrical socket burned out", description: "In search of someone who can change a burned out electrical socket in my house.", type: "Electrical"},
         {title: "Garden overgrowth", description: "Looking for someone to take care of our overgrown lawn.", type: "Gardening"}
     ]
+
+    for(var i=0; requestsStorage!=null && i<requestsStorage.length; i++){
+        var req = {title: requestsStorage[i].title, description: requestsStorage[i].description, type: requestsStorage[i].type}
+        requests.push(req)
+    }
+
+    function handleClick(){
+        localStorage.removeItem('Requests')
+        window.location.reload(false)
+    }
 
     return(
         <div>
@@ -59,6 +70,7 @@ function Feed() {
                 ))            
             }
             </div>
+            <button onClick={handleClick}>Clear</button>
         </div>
     )
 }
